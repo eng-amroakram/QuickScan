@@ -1,0 +1,107 @@
+{% extends "layouts/layout.html" %} {% block content %}
+
+<div class="container-fluid">
+  <div class="p-4 mb-4">
+    <div class="row mb-4">
+      <div wire:ignore>
+        <!-- Page Title  -->
+        <h2 style="font-weight: bold">All Files</h2>
+        <!-- Page Title  -->
+
+        <!-- Breadcrumb -->
+        <nav class="d-flex navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb" style="font-weight: bold">
+                <li class="breadcrumb-item"><a href="#">Control Panel</a></li>
+                <li class="breadcrumb-item"><a href="#">All Files</a></li>
+              </ol>
+            </nav>
+
+            <div class="d-flex align-items-center pe-3">
+              <a class="btn btn-sm btn-warning">
+                <i class="fas fa-file me-2"></i>
+                <span>Add File</span>
+              </a>
+            </div>
+          </div>
+        </nav>
+        <!-- Breadcrumb -->
+      </div>
+    </div>
+
+    <!-- Data Tables -->
+    <div class="row">
+      <div class="row p-2 mb-3">
+        <div class="col-md-3">
+          <div class="form-outline">
+            <i class="fab fa-searchengin trailing text-primary"></i>
+            <input
+              type="search"
+              id="search"
+              class="form-control form-icon-trailing"
+              aria-describedby="textExample1"
+            />
+            <label class="form-label" for="search">Search</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-responsive-md text-center">
+      <div class="datatable-loader bg-light" style="height: 8px">
+        <span class="datatable-loader-inner"
+          ><span class="datatable-progress bg-primary"></span
+        ></span>
+      </div>
+      <table
+        class="table table-bordered text-center"
+        style="margin-bottom: 0rem"
+      >
+        <thead>
+          <tr>
+            <th class="th-sm"><strong>ID</strong></th>
+            <th data-mdb-sort="true" class="th-sm">
+              <strong>File Name</strong>
+            </th>
+            <th data-mdb-sort="false" class="th-sm">
+              <strong>File Size (KB)</strong>
+            </th>
+            <th data-mdb-sort="false" class="th-sm">
+              <strong>Upload Time</strong>
+            </th>
+            <th data-mdb-sort="false" class="th-sm"><strong>Status</strong></th>
+            <th data-mdb-sort="false" class="th-sm"><strong>Score</strong></th>
+            <th data-mdb-sort="false" class="th-sm">
+              <strong>Control</strong>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="7" class="fw-bold fs-6">There is no data yet !</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Table Pagination -->
+    <div class="d-flex justify-content-between mt-4">
+      <nav aria-label="...">
+        <ul class="pagination pagination-circle"></ul>
+      </nav>
+
+      <div class="col-md-1">
+        <select class="select">
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

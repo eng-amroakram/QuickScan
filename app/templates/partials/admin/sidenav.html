@@ -1,0 +1,61 @@
+<nav
+  id="sidenav-1"
+  class="sidenav ps ps--active-y"
+  data-mdb-color="light"
+  style="background-color: #2d2c2c"
+  role="navigation"
+  data-mdb-mode="side"
+  data-mdb-right="false"
+  data-mdb-hidden="false"
+  data-mdb-accordion="true"
+>
+  <a
+    class="ripple d-flex justify-content-center py-5"
+    style="padding-top: 5rem !important"
+    href="{{ url_for('home') }}"
+    data-ripple-color="primary"
+  >
+    <img
+      id="SafteyKSAMC-Logo"
+      width="200"
+      src="{{ url_for('static', filename='admin/images/logo.jpeg') }}"
+      alt="SafteyKSAMC-Logo"
+      draggable="false"
+    />
+  </a>
+
+  <ul class="sidenav-menu">
+    <li class="sidenav-item">
+      <a class="sidenav-link" href="{{ url_for('home') }}">
+        <i class="fas fa-chart-area pr-4 me-2"></i
+        ><span>Home</span></a
+      >
+    </li>
+
+    <li class="sidenav-item">
+      <a class="sidenav-link" href="{{ url_for('files') }}">
+        <i class="fas fa-folder pr-4 me-2 text-warning"></i
+        ><span>All Files</span></a>
+    </li>
+
+    <li class="sidenav-item">
+      <a class="sidenav-link" href="{{ url_for('flag') }}">
+        <i class="fas fa-flag pr-4 me-2 text-danger"></i
+        ><span>Flag</span></a>
+    </li>
+
+    <li class="sidenav-item">
+      <a class="sidenav-link" href="{{ url_for('help') }}">
+        <i class="far fa-circle-question pr-4 me-2 text-danger"></i
+        ><span>Help</span></a>
+    </li>
+
+    <li class="sidenav-item">
+      <a class="sidenav-link" href="{{ url_for('info') }}">
+        <i class="fas fa-circle-info pr-4 me-2 text-info"></i
+        ><span>Info</span></a>
+    </li>
+    
+  </ul>
+  
+</nav>

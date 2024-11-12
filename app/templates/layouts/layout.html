@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuickScan</title>
+
+    <!-- Font Awesome Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='admin/css/core.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='admin/css/new-prism.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='admin/css/card.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='admin/css/switch.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='admin/css/modals.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='admin/images/logo.jpeg') }}"
+    />
+    <style>
+      .mdb-docs-layout {
+        padding-left: 240px;
+      }
+
+      @media (max-width: 1440px) {
+        .mdb-docs-layout {
+          padding-left: 0px;
+        }
+      }
+
+      .color-green {
+        color: rgb(1, 161, 127);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      {% include 'partials/admin/sidenav.html' %} {% include
+      'partials/admin/navbar.html' %}
+    </header>
+
+    <main id="main-screen" class="pt-4 mdb-docs-layout">
+      {% block content %}{% endblock %}
+    </main>
+
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='admin/js/new-prism.js') }}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='admin/js/mdb.min.js') }}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='admin/js/jquery-3.4.1.min.js') }}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='admin/js/popper.min.js') }}"
+    ></script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        const sidenav = document.getElementById("sidenav-1");
+        const instance = mdb.Sidenav.getInstance(sidenav);
+
+        let innerWidth = null;
+
+        const setMode = (e) => {
+          // Check necessary for Android devices
+          if (window.innerWidth === innerWidth) {
+            return;
+          }
+
+          innerWidth = window.innerWidth;
+
+          if (window.innerWidth < 1700) {
+            instance.changeMode("over");
+            instance.hide();
+          } else {
+            instance.changeMode("side");
+            instance.show();
+          }
+        };
+
+        setMode();
+
+        // Event listeners
+        window.addEventListener("resize", setMode);
+      });
+    </script>
+  </body>
+</html>

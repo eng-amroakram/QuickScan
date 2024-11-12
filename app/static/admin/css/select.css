@@ -1,0 +1,549 @@
+.input-group {
+    flex-wrap: nowrap
+}
+
+.datatable-select-wrapper .select-input {
+    max-width: 70px
+}
+
+.select-wrapper {
+    --mdb-form-outline-select-arrow-color: #000;
+    --mdb-form-outline-select-arrow-font-size: 0.8rem;
+    --mdb-form-outline-select-arrow-top: 9px;
+    --mdb-form-outline-select-arrow-right: 9px;
+    --mdb-form-outline-select-valid-color: #00b74a;
+    --mdb-form-outline-select-invalid-color: #f93154;
+    --mdb-form-outline-select-clear-btn-color: #000;
+    --mdb-form-outline-select-clear-btn-font-size: 1rem;
+    --mdb-form-outline-select-clear-btn-top: 7px;
+    --mdb-form-outline-select-clear-btn-right: 27px;
+    --mdb-form-outline-select-clear-btn-focus-color: #3b71ca;
+    --mdb-form-outline-select-sm-clear-btn-font-size: 0.8rem;
+    --mdb-form-outline-select-sm-clear-btn-top: 4px;
+    --mdb-form-outline-select-lg-clear-btn-top: 11px;
+    --mdb-form-outline-select-label-max-width: 100%;
+    --mdb-form-outline-select-label-active-transform: translateY(-1rem) translateY(0.1rem) scale(0.8);
+    --mdb-form-outline-select-lg-label-active-transform: translateY(-1.25rem) translateY(0.1rem) scale(0.8);
+    --mdb-form-outline-select-sm-label-active-transform: translateY(-0.83rem) translateY(0.1rem) scale(0.8);
+    --mdb-form-outline-select-input-focused-color: #616161;
+    --mdb-form-outline-select-label-color: #3b71ca;
+    --mdb-form-outline-select-notch-border-color: #3b71ca;
+    --mdb-form-outline-select-input-focused-arrow-color: #3b71ca;
+    --mdb-form-outline-select-white-focus-arrow-color: #fff;
+    --mdb-form-outline-select-white-arrow-color: #fff;
+    --mdb-form-outline-select-white-clear-btn: #fff;
+    --mdb-form-outline-select-sm-arrow-top: 3px;
+    --mdb-form-outline-select-lg-arrow-top: 13px;
+    --mdb-form-outline-form-notch-border-top: 1px solid transparent;
+    width: 100%;
+}
+
+.select-input.focused~.form-notch .form-notch-middle {
+    border-top: var(--mdb-form-outline-form-notch-border-top);
+    border-color: var(--mdb-form-outline-select-notch-border-color);
+    box-shadow: 0 1px 0 0 var(--mdb-form-outline-select-notch-border-color)
+}
+
+.select-input.focused~.select-arrow {
+    color: var(--mdb-form-outline-select-input-focused-arrow-color)
+}
+
+.form-white .select-input:focus~.select-arrow {
+    color: var(--mdb-form-outline-select-white-focus-arrow-color)
+}
+
+.form-white .select-input.focused~.select-arrow {
+    color: var(--mdb-form-outline-select-white-arrow-color)
+}
+
+.select-input {
+    cursor: pointer
+}
+
+.select-input[disabled] {
+    cursor: default
+}
+
+.datepicker-main {
+    --mdb-datepicker-date-controls-padding-top: 10px;
+    --mdb-datepicker-date-controls-padding-x: 12px;
+    --mdb-datepicker-date-controls-color: rgba(0, 0, 0, 0.64);
+    --mdb-datepicker-view-change-button-padding: 10px;
+    --mdb-datepicker-view-change-button-color: #666;
+    --mdb-datepicker-view-change-button-font-weight: 500;
+    --mdb-datepicker-view-change-button-font-size: 0.9rem;
+    --mdb-datepicker-view-change-button-border-radius: 10px;
+    --mdb-datepicker-view-change-button-state-background-color: #eee;
+    --mdb-datepicker-view-change-button-after-border-width: 5px;
+    --mdb-datepicker-view-change-button-after-margin-left: 5px;
+    --mdb-datepicker-arrow-controls-margin-top: 10px;
+    --mdb-datepicker-previous-button-width: 40px;
+    --mdb-datepicker-previous-button-height: 40px;
+    --mdb-datepicker-previous-button-line-height: 40px;
+    --mdb-datepicker-previous-button-color: rgba(0, 0, 0, 0.64);
+    --mdb-datepicker-previous-button-margin-right: 24px;
+    --mdb-datepicker-previous-button-state-background-color: #eee;
+    --mdb-datepicker-previous-button-state-border-radius: 50%;
+    --mdb-datepicker-previous-button-after-margin: 15.5px;
+    --mdb-datepicker-previous-button-after-border-width: 2px;
+    --mdb-datepicker-previous-button-after-transform: translateX(2px) rotate(-45deg);
+    --mdb-datepicker-next-button-width: 40px;
+    --mdb-datepicker-next-button-height: 40px;
+    --mdb-datepicker-next-button-line-height: 40px;
+    --mdb-datepicker-next-button-color: rgba(0, 0, 0, 0.64);
+    --mdb-datepicker-next-button-margin-background-color: #eee;
+    --mdb-datepicker-next-button-state-border-radius: 50%;
+    --mdb-datepicker-next-button-after-margin: 15.5px;
+    --mdb-datepicker-next-button-after-border-width: 2px;
+    --mdb-datepicker-next-button-after-transform: translateX(-2px) rotate(45deg);
+    --mdb-datepicker-view-padding-x: 12px;
+    --mdb-datepicker-table-width: 304px;
+    --mdb-datepicker-day-heading-width: 40px;
+    --mdb-datepicker-day-heading-height: 40px;
+    --mdb-datepicker-day-heading-font-size: 12px;
+    --mdb-datepicker-day-heading-font-weight: 400;
+    --mdb-datepicker-cell-disabled-color: #ccc;
+    --mdb-datepicker-cell-hover-background-color: #d3d3d3;
+    --mdb-datepicker-cell-selected-background-color: #3b71ca;
+    --mdb-datepicker-cell-selected-color: #fff;
+    --mdb-datepicker-cell-focused-background-color: #eee;
+    --mdb-datepicker-cell-focused-selected-background-color: #3b71ca;
+    --mdb-datepicker-cell-border-width: 1px;
+    --mdb-datepicker-cell-border-color: #000;
+    --mdb-datepicker-small-cell-width: 40px;
+    --mdb-datepicker-small-cell-height: 40px;
+    --mdb-datepicker-small-cell-content-width: 36px;
+    --mdb-datepicker-small-cell-content-height: 36px;
+    --mdb-datepicker-small-cell-content-line-height: 36px;
+    --mdb-datepicker-small-cell-content-border-radius: 50%;
+    --mdb-datepicker-small-cell-content-font-size: 13px;
+    --mdb-datepicker-large-cell-width: 76px;
+    --mdb-datepicker-large-cell-height: 42px;
+    --mdb-datepicker-large-cell-content-width: 72px;
+    --mdb-datepicker-large-cell-content-height: 40px;
+    --mdb-datepicker-large-cell-content-line-height: 40px;
+    --mdb-datepicker-large-cell-content-padding-y: 1px;
+    --mdb-datepicker-large-cell-content-padding-x: 2px;
+    --mdb-datepicker-large-cell-content-border-radius: 999px;
+    position: relative;
+    height: 100%
+}
+
+.datepicker-cell:not(.selected).focused .datepicker-cell-content {
+    background-color: var(--mdb-datepicker-cell-focused-background-color)
+}
+
+.datepicker-cell.focused .datepicker-cell-content.selected {
+    background-color: var(--mdb-datepicker-cell-focused-selected-background-color)
+}
+
+.autocomplete-input.focused {
+    --mdb-autocomplete-input-focused-color: #616161;
+    color: var(--mdb-autocomplete-input-focused-color);
+    outline: 0
+}
+
+
+.autocomplete-input.focused~.autocomplete-label {
+    color: var(--mdb-autocomplete-label-color)
+}
+
+.autocomplete-input.focused::-moz-placeholder {
+    opacity: 1
+}
+
+.autocomplete-input.focused::placeholder {
+    opacity: 1
+}
+
+.autocomplete-input.focused~.form-notch .form-notch-leading {
+    border-color: var(--mdb-form-outline-select-notch-border-color);
+    box-shadow: -1px 0 0 0 var(--mdb-form-outline-select-notch-border-color), 0 1px 0 0 var(--mdb-form-outline-select-notch-border-color), 0 -1px 0 0 var(--mdb-form-outline-select-notch-border-color)
+}
+
+.autocomplete-input.focused~.form-notch .form-notch-middle {
+    border-color: var(--mdb-form-outline-select-notch-border-color);
+    box-shadow: 0 1px 0 0 var(--mdb-form-outline-select-notch-border-color);
+    border-top: 1px solid transparent
+}
+
+.autocomplete-input.focused~.form-notch .form-notch-trailing {
+    border-color: var(--mdb-form-outline-select-notch-border-color);
+    box-shadow: 1px 0 0 0 var(--mdb-form-outline-select-notch-border-color), 0 -1px 0 0 var(--mdb-form-outline-select-notch-border-color), 0 1px 0 0 var(--mdb-form-outline-select-notch-border-color)
+}
+
+
+.form-outline {
+    position: relative;
+    width: 100%
+}
+
+.form-outline .form-helper {
+    width: 100%;
+    position: absolute;
+    font-size: .875em;
+    color: #757575
+}
+
+.form-outline .form-helper .form-counter {
+    text-align: right
+}
+
+.form-outline .trailing {
+    position: absolute;
+    right: 10px;
+    left: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none
+}
+
+.form-outline .form-icon-trailing {
+    padding-right: 2rem !important
+}
+
+.input-group.form-outline .input-group-text {
+    border-left: 0
+}
+
+.input-group.form-outline input+.input-group-text {
+    border: 0;
+    border-left: 1px solid #bdbdbd
+}
+
+.input-group .form-outline:not(:first-child),
+.input-group .form-outline:not(:first-child) .form-notch-leading,
+.input-group .select-wrapper:not(:first-child),
+.input-group .select-wrapper:not(:first-child) .form-notch-leading {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+.input-group .form-outline:not(:last-child),
+.input-group .form-outline:not(:last-child) .form-notch-trailing,
+.input-group .select-wrapper:not(:last-child),
+.input-group .select-wrapper:not(:last-child) .form-notch-trailing {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important
+}
+
+.datatable-select-wrapper {
+    display: flex;
+    align-items: center;
+    font-size: var(--mdb-datatable-select-wrapper-font-size);
+    font-weight: var(--mdb-datatable-select-wrapper-font-weight);
+    padding: 0 1rem
+}
+
+.datatable-select-wrapper .select-input {
+    max-width: 70px
+}
+
+
+.datatable.datatable-dark .select-wrapper .select-arrow,
+.datatable.datatable-dark .select-wrapper input {
+    color: var(--mdb-datatable-dark-select-arrow-input-color)
+}
+
+.datatable.datatable-dark .select-wrapper .form-notch-leading,
+.datatable.datatable-dark .select-wrapper .form-notch-middle,
+.datatable.datatable-dark .select-wrapper .form-notch-trailing,
+.datatable.datatable-dark .select-wrapper .form-outline .form-control:focus~.form-notch .form-notch-leading {
+    border-color: var(--mdb-datatable-dark-border-color) !important
+}
+
+.select-arrow {
+    color: var(--mdb-form-outline-select-arrow-color);
+    text-align: center;
+    font-size: var(--mdb-form-outline-select-arrow-font-size);
+    position: absolute;
+    top: var(--mdb-form-outline-select-arrow-top);
+    left: var(--mdb-form-outline-select-arrow-right)
+}
+
+.select-arrow:before {
+    content: "⮟"
+}
+
+.was-validated .form-control:valid~.select-arrow {
+    color: var(--mdb-form-outline-select-valid-color)
+}
+
+.was-validated .form-control:invalid~.select-arrow {
+    color: var(--mdb-form-outline-select-invalid-color)
+}
+
+.select-input.focused~.select-arrow {
+    color: var(--mdb-form-outline-select-input-focused-arrow-color)
+}
+
+.form-white .select-input:focus~.select-arrow {
+    color: var(--mdb-form-outline-select-white-focus-arrow-color)
+}
+
+.form-white .select-arrow {
+    color: var(--mdb-form-outline-select-white-arrow-color)
+}
+
+.form-white .select-clear-btn {
+    color: var(--mdb-form-outline-select-white-clear-btn)
+}
+
+.form-control-sm~.select-arrow {
+    top: var(--mdb-form-outline-select-sm-arrow-top)
+}
+
+.form-control-lg~.select-arrow {
+    top: var(--mdb-form-outline-select-lg-arrow-top)
+}
+
+.form-white .select-input.focused~.select-arrow {
+    color: var(--mdb-form-outline-select-white-arrow-color)
+}
+
+select.select-initialized {
+    display: none !important
+}
+
+.select-dropdown-container {
+    --mdb-form-outline-select-dropdown-container-z-index: 1070;
+    --mdb-form-outline-select-dropdown-bg: #fff;
+    --mdb-form-outline-select-dropdown-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    --mdb-form-outline-select-dropdown-min-width: 100px;
+    --mdb-form-outline-select-dropdown-transform: scaleY(0.8);
+    --mdb-form-outline-select-dropdown-transition: all 0.2s;
+    --mdb-form-outline-select-dropdown-open-transform: scaleY(1);
+    --mdb-form-outline-select-dropdown-input-group-padding: 10px;
+    --mdb-form-outline-select-options-wrapper-scrollbar-width: 4px;
+    --mdb-form-outline-select-options-wrapper-scrollbar-height: 4px;
+    --mdb-form-outline-select-options-wrapper-scrollbar-border-bottom-right-radius: 4px;
+    --mdb-form-outline-select-options-wrapper-scrollbar-border-bottom-left-radius: 4px;
+    --mdb-form-outline-select-options-wrapper-scrollbar-thumb-height: 50px;
+    --mdb-form-outline-select-options-wrapper-scrollbar-thumb-bg: #999;
+    --mdb-form-outline-select-options-wrapper-scrollbar-thumb-border-radius: 4px;
+    z-index: var(--mdb-form-outline-select-dropdown-container-z-index)
+}
+
+.select-dropdown .form-check-input label {
+    display: block
+}
+
+
+.select-dropdown {
+    background-color: var(--mdb-form-outline-select-dropdown-bg);
+    box-shadow: var(--mdb-form-outline-select-dropdown-box-shadow);
+    margin: 0;
+    min-width: var(--mdb-form-outline-select-dropdown-min-width);
+    outline: 0;
+    position: relative;
+    transform: var(--mdb-form-outline-select-dropdown-transform);
+    opacity: 0;
+    transition: var(--mdb-form-outline-select-dropdown-transition)
+}
+
+.select-dropdown.open {
+    transform: var(--mdb-form-outline-select-dropdown-open-transform);
+    opacity: 1
+}
+
+.select-dropdown>.input-group {
+    padding: var(--mdb-form-outline-select-dropdown-input-group-padding)
+}
+
+.autocomplete-dropdown.open {
+    transform: var(--mdb-autocomplete-dropdown-open-transform);
+    opacity: 1
+}
+
+.select-dropdown.open {
+    transform: var(--mdb-form-outline-select-dropdown-open-transform);
+    opacity: 1
+}
+
+
+.select-options-wrapper {
+    overflow-y: auto
+}
+
+.select-options-wrapper::-webkit-scrollbar {
+    width: var(--mdb-form-outline-select-options-wrapper-scrollbar-width);
+    height: var(--mdb-form-outline-select-options-wrapper-scrollbar-height)
+}
+
+.select-options-wrapper::-webkit-scrollbar-button:end:increment,
+.select-options-wrapper::-webkit-scrollbar-button:start:decrement {
+    display: block;
+    height: 0;
+    background-color: transparent
+}
+
+.select-options-wrapper::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+    border-radius: 0;
+    border-bottom-right-radius: var(--mdb-form-outline-select-options-wrapper-scrollbar-border-bottom-right-radius);
+    border-bottom-left-radius: var(--mdb-form-outline-select-options-wrapper-scrollbar-border-bottom-left-radius)
+}
+
+.select-options-wrapper::-webkit-scrollbar-thumb:vertical {
+    height: var(--mdb-form-outline-select-options-wrapper-scrollbar-thumb-height);
+    background-color: var(--mdb-form-outline-select-options-wrapper-scrollbar-thumb-bg);
+    border-radius: var(--mdb-form-outline-select-options-wrapper-scrollbar-thumb-border-radius)
+}
+
+.select-options-list {
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+
+
+.select-options-wrapper {
+    overflow-y: auto
+}
+
+.select-options-wrapper::-webkit-scrollbar {
+    width: var(--mdb-form-outline-select-options-wrapper-scrollbar-width);
+    height: var(--mdb-form-outline-select-options-wrapper-scrollbar-height)
+}
+
+.select-options-wrapper::-webkit-scrollbar-button:end:increment,
+.select-options-wrapper::-webkit-scrollbar-button:start:decrement {
+    display: block;
+    height: 0;
+    background-color: transparent
+}
+
+.select-options-wrapper::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+    border-radius: 0;
+    border-bottom-right-radius: var(--mdb-form-outline-select-options-wrapper-scrollbar-border-bottom-right-radius);
+    border-bottom-left-radius: var(--mdb-form-outline-select-options-wrapper-scrollbar-border-bottom-left-radius)
+}
+
+.select-options-wrapper::-webkit-scrollbar-thumb:vertical {
+    height: var(--mdb-form-outline-select-options-wrapper-scrollbar-thumb-height);
+    background-color: var(--mdb-form-outline-select-options-wrapper-scrollbar-thumb-bg);
+    border-radius: var(--mdb-form-outline-select-options-wrapper-scrollbar-thumb-border-radius)
+}
+
+.select-options-list {
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+
+.select-option-group-label {
+    --mdb-form-outline-select-option-group-label-padding-left: 16px;
+    --mdb-form-outline-select-option-group-label-padding-right: 16px;
+    --mdb-form-outline-select-option-group-label-font-size: 1rem;
+    --mdb-form-outline-select-option-group-label-font-weight: 400;
+    --mdb-form-outline-select-option-group-label-color: rgba(0, 0, 0, 0.54);
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: var(--mdb-form-outline-select-option-group-label-padding-left);
+    padding-right: var(--mdb-form-outline-select-option-group-label-padding-right);
+    font-size: var(--mdb-form-outline-select-option-group-label-font-size);
+    font-weight: var(--mdb-form-outline-select-option-group-label-font-weight);
+    background-color: transparent;
+    color: var(--mdb-form-outline-select-option-group-label-color);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none
+}
+
+.select-option-group>.select-option {
+    --mdb-form-outline-select-option-group-select-option-padding-left: 26px;
+    padding-left: var(--mdb-form-outline-select-option-group-select-option-padding-left)
+}
+
+.select-option {
+    --mdb-form-outline-select-option-color: rgba(0, 0, 0, 0.87);
+    --mdb-form-outline-select-option-padding-left: 16px;
+    --mdb-form-outline-select-option-padding-right: 16px;
+    --mdb-form-outline-select-option-font-size: 1rem;
+    --mdb-form-outline-select-option-font-weight: 400;
+    --mdb-form-outline-select-option-hover-not-disabled-bg: rgba(0, 0, 0, 0.048);
+    --mdb-form-outline-select-option-active-bg: rgba(0, 0, 0, 0.048);
+    --mdb-form-outline-select-option-selected-active-bg: rgba(0, 0, 0, 0.048);
+    --mdb-form-outline-select-option-selected-disabled-color: #9e9e9e;
+    --mdb-form-outline-select-option-selected-bg: rgba(0, 0, 0, 0.02);
+    --mdb-form-outline-select-option-disabled-color: #9e9e9e;
+    --mdb-form-outline-select-option-text-form-check-input-margin-right: 10px;
+    --mdb-form-outline-select-option-secondary-text-font-size: 0.8rem;
+    --mdb-form-outline-select-option-secondary-text-color: #6c757d;
+    --mdb-form-outline-select-option-icon-width: 28px;
+    --mdb-form-outline-select-option-icon-height: 28px;
+    --mdb-form-outline-select-no-results-padding-left: 16px;
+    --mdb-form-outline-select-no-results-padding-right: 16px;
+    --mdb-form-outline-select-white-arrow: #fff;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--mdb-form-outline-select-option-color);
+    padding-left: var(--mdb-form-outline-select-option-padding-left);
+    padding-right: var(--mdb-form-outline-select-option-padding-right);
+    font-size: var(--mdb-form-outline-select-option-font-size);
+    font-weight: var(--mdb-form-outline-select-option-font-weight);
+    background-color: transparent;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none
+}
+
+.select-option:hover:not(.disabled) {
+    background-color: var(--mdb-form-outline-select-option-hover-not-disabled-bg)
+}
+
+.select-option.active {
+    background-color: var(--mdb-form-outline-select-option-active-bg)
+}
+
+.select-option.selected.active {
+    background-color: var(--mdb-form-outline-select-option-selected-active-bg)
+}
+
+.select-option.selected.disabled {
+    cursor: default;
+    color: var(--mdb-form-outline-select-option-selected-disabled-color);
+    background-color: transparent
+}
+
+.select-option.selected {
+    background-color: var(--mdb-form-outline-select-option-selected-bg)
+}
+
+.select-option.disabled {
+    cursor: default;
+    color: var(--mdb-form-outline-select-option-disabled-color)
+}
+
+.select-option-text .form-check-input {
+    margin-right: var(--mdb-form-outline-select-option-text-form-check-input-margin-right)
+}
+
+.select-option-secondary-text {
+    font-size: var(--mdb-form-outline-select-option-secondary-text-font-size);
+    color: var(--mdb-form-outline-select-option-secondary-text-color);
+    display: block;
+    line-height: normal
+}
+
+.select-option-icon {
+    width: var(--mdb-form-outline-select-option-icon-width);
+    height: var(--mdb-form-outline-select-option-icon-height)
+}
+
+.select-option-text .form-check-input {
+    margin-right: var(--mdb-form-outline-select-option-text-form-check-input-margin-right)
+}

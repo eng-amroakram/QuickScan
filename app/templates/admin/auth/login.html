@@ -1,0 +1,65 @@
+{% extends "layouts/login.html" %} {% block content %}
+<div style="width: 30rem">
+  <form action="{{ url_for('auth.login') }}" method="POST">
+    <!-- Email input -->
+    <div data-mdb-input-init class="form-outline mb-4">
+      <input
+        type="email"
+        id="email"
+        name="email"
+        maxlength="30"
+        class="form-control form-control-lg job-number-input"
+        required
+      />
+      <label class="form-label" for="email">Email</label>
+      <div class="form-helper text-danger email-validation"></div>
+    </div>
+
+    <!-- Password input -->
+    <div data-mdb-input-init class="form-outline mb-4">
+      <input
+        type="password"
+        name="password"
+        id="passwordID"
+        maxlength="30"
+        class="form-control form-control-lg password-input"
+        required
+      />
+      <label class="form-label" for="passwordID">Password</label>
+      <div class="form-helper text-danger password-validation"></div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <!-- Checkbox -->
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="rememberMe"
+          checked
+        />
+        <label class="form-check-label" for="rememberMe">Remember Me</label>
+      </div>
+      <div>
+        <a href="{{ url_for('auth.register') }}" style="color: #7a9e85"
+          >Register</a
+        >
+        <span> / </span>
+        <a href="#" style="color: #7a9e85">Forgot your password?</a>
+      </div>
+    </div>
+
+    <!-- Submit button -->
+
+    <button
+      type="submit"
+      data-mdb-button-initialized="true"
+      class="btn btn-lg text-white btn-block submitting-button"
+      style="background-color: #7a9e85"
+    >
+      Login
+    </button>
+  </form>
+</div>
+{% endblock %}

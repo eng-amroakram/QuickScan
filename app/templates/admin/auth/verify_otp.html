@@ -1,0 +1,29 @@
+{% extends "layouts/login.html" %} {% block content %}
+<div style="width: 30rem">
+  <form action="{{ url_for('auth.verify_otp') }}" method="POST">
+    <!-- Email input -->
+    <div data-mdb-input-init class="form-outline mb-4">
+      <input
+        type="tetx"
+        id="otp"
+        name="otp"
+        maxlength="6"
+        class="form-control form-control-lg otp-input"
+        required
+      />
+      <label class="form-label" for="email">OTP Code</label>
+      <div class="form-helper text-danger otp-validation"></div>
+    </div>
+
+    <!-- Submit button -->
+    <button
+      type="submit"
+      data-mdb-button-initialized="true"
+      class="btn btn-lg text-white btn-block submitting-button"
+      style="background-color: #7a9e85"
+    >
+      Verify OTP
+    </button>
+  </form>
+</div>
+{% endblock %}

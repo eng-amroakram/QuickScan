@@ -1,0 +1,126 @@
+{% extends "layouts/layout.html" %} {% block content %}
+<div class="container-fluid">
+  <div class="p-4 mb-4">
+    <div class="row mb-4 justify-content-center">
+      <div class="col-md-8 text-center">
+        <h2 style="font-weight: bold">
+          Welcome to QuickScan, {{ user_name }}!
+        </h2>
+        <p>
+          Where we make analyzing ransomware a blast to safeguard your precious
+          files.
+        </p>
+        <h4>Upload a File for Analysis</h4>
+
+        <form
+          action="{{ url_for('upload_file') }}"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <div class="input-group">
+            <span class="input-group-text">
+              <div
+                class="spinner-border text-primary spinner-border-sm"
+                role="status"
+                id="spinner"
+                style="display: none"
+              >
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <i class="far fa-file-lines" id="file-icon"></i>
+            </span>
+            <input
+              type="file"
+              name="file"
+              id="file"
+              class="form-control"
+              placeholder="Upload file"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary mt-3">Upload</button>
+        </form>
+
+        <!-- Progress Bar -->
+        <div
+          class="progress mt-3"
+          style="height: 20px; display: none"
+          id="upload-progress"
+        >
+          <div
+            class="progress-bar"
+            role="progressbar"
+            id="progress-bar"
+            aria-valuenow="0"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            style="width: 0%"
+          >
+            0%
+          </div>
+        </div>
+
+        <div id="status-message" class="mt-2"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Handling file upload progress and spinner display
+  const fileInput = document.getElementById("file");
+  const spinner = document.getElementById("spinner");
+  const fileIcon = document.getElementById("file-icon");
+  const progressBar = document.getElementById("progress-bar");
+  const uploadProgress = document.getElementById("upload-progress");
+  const statusMessage = document.getElementById("status-message");
+
+  // On file input change, start file upload
+  fileInput.addEventListener("change", function () {
+    // Trigger file upload progress bar and spinner
+    spinner.style.display = "inline-block";
+    fileIcon.style.display = "none";
+    uploadProgress.style.display = "block";
+    statusMessage.textContent = "Uploading...";
+
+    const formData = new FormData();
+    formData.append("file", fileInput.files[0]);
+
+    // AJAX request to upload file
+    fetch("{{ url_for('upload_file') }}", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle successful upload
+        if (data.success) {
+          statusMessage.textContent = "File uploaded successfully!";
+          progressBar.style.width = "100%";
+          progressBar.textContent = "100%";
+          progressBar.classList.add("bg-success");
+        } else if (data.redirect) {
+          // Redirect to login page if the user is not logged in
+          window.location.href = data.redirect;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        // Handle errors
+        statusMessage.textContent = "Upload failed!";
+        progressBar.classList.add("bg-danger");
+        progressBar.style.width = "100%";
+        progressBar.textContent = "Failed";
+      })
+      .finally(() => {
+        // Reset the spinner
+        setTimeout(() => {
+          spinner.style.display = "none";
+          fileIcon.style.display = "inline-block";
+        }, 3000); // Hide spinner after 3 seconds
+      });
+  });
+</script>
+
+{% endblock %}
