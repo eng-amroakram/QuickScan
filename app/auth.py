@@ -7,7 +7,6 @@ from app import mail  # Import Flask-Mail instance
 import random
 import string
 
-
 auth_bp = Blueprint("auth", __name__, url_prefix="/auth")
 
 
@@ -103,3 +102,61 @@ def verify_otp():
             return redirect(url_for("auth.verify_otp"))
 
     return render_template("admin/auth/verify_otp.html")
+
+
+@auth_bp.route("/forgot_password", methods=["GET", "POST"])
+def forgot_password():
+    if request.method == "POST":
+        email = request.form["email"]
+        try:
+            user = User.get(User.email == email)
+            # Generate OTP
+            otp = generate_otp()
+
+            # Store OTP in the session or in a database if required
+            session["otp"] = otp
+            session["reset_user_id"] = user.id
+
+            # Send OTP via email
+            msg = Message(
+                subject="Your Password Reset OTP for QuickScan",
+                recipients=[email],
+                body=f"Hello,\n\nYour OTP for password reset is: {otp}\n\nUse this OTP to reset your password.\n\nBest regards,\nQuickScan Team",
+            )
+            mail.send(msg)
+            flash("An OTP has been sent to your email to reset your password.")
+            return redirect(url_for("auth.reset_password"))
+        except User.DoesNotExist:
+            flash("Email not found. Please register first.")
+            return redirect(url_for("auth.register"))
+
+    return render_template("admin/auth/forgot_password.html")
+
+
+@auth_bp.route("/reset_password", methods=["GET", "POST"])
+def reset_password():
+    if request.method == "POST":
+        entered_otp = request.form["otp"]
+        new_password = request.form["password"]
+        reset_user_id = session.get("reset_user_id")
+        correct_otp = session.get("otp")
+
+        if entered_otp == correct_otp and reset_user_id:
+            # Hash the new password
+            hashed_password = generate_password_hash(new_password)
+            # Update the user’s password in the database
+            user = User.get_by_id(reset_user_id)
+            user.password = hashed_password
+            user.save()
+
+            # Clear the OTP from the session
+            session.pop("otp", None)
+            session.pop("reset_user_id", None)
+
+            flash("Your password has been reset successfully.")
+            return redirect(url_for("auth.login"))
+        else:
+            flash("Invalid OTP. Please try again.")
+            return redirect(url_for("auth.reset_password"))
+
+    return render_template("admin/auth/reset_password.html")

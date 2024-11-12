@@ -1,5 +1,4 @@
 {% extends "layouts/layout.html" %} {% block content %}
-
 <div class="container-fluid">
   <div class="p-4 mb-4">
     <div class="row mb-4">
@@ -7,7 +6,105 @@
         <h2 style="font-weight: bold">Information Page</h2>
       </div>
     </div>
+
+    <!-- Static Analysis Section -->
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h3>Static Analysis</h3>
+        <p>
+          Static Analysis involves examining the code without executing it. This
+          technique is widely used to identify vulnerabilities, hidden logic,
+          and other issues at the source code or binary level. It provides a
+          safer environment to inspect code, especially when dealing with
+          potentially malicious software.
+        </p>
+        <ul>
+          <li>
+            <strong>Code Review:</strong> Inspecting the source code to identify
+            logical flaws and vulnerabilities.
+          </li>
+          <li>
+            <strong>Decompiling:</strong> Converting compiled binaries back into
+            human-readable code for review.
+          </li>
+          <li>
+            <strong>Signature Detection:</strong> Using patterns and signatures
+            to detect known malicious code snippets.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Dynamic Analysis Section -->
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h3>Dynamic Analysis</h3>
+        <p>
+          Dynamic Analysis involves executing the program in a controlled
+          environment to observe its behavior in real-time. This approach
+          provides insight into how the application interacts with system
+          resources, such as memory, network connections, and file systems.
+        </p>
+        <ul>
+          <li>
+            <strong>Behavioral Monitoring:</strong> Observing how the software
+            behaves when executed.
+          </li>
+          <li>
+            <strong>Network Analysis:</strong> Tracking any network connections
+            initiated by the application.
+          </li>
+          <li>
+            <strong>Sandboxing:</strong> Running the software in a secure,
+            isolated environment to prevent harm.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Image Section -->
+    <div class="row mb-4">
+      <div class="col-md-12 text-center">
+        <img
+          src="{{ url_for('static', filename='admin/images/static_analysis_diagram.png') }}"
+          alt="Static vs Dynamic Analysis Comparison"
+          class="img-fluid"
+        />
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h3>Comparison Table</h3>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Aspect</th>
+              <th>Static Analysis</th>
+              <th>Dynamic Analysis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Execution</td>
+              <td>Code is not executed</td>
+              <td>Code is executed in a controlled environment</td>
+            </tr>
+            <tr>
+              <td>Focus</td>
+              <td>Source code and structure</td>
+              <td>Behavior and interactions</td>
+            </tr>
+            <tr>
+              <td>Common Tools</td>
+              <td>IDA Pro, Ghidra</td>
+              <td>Cuckoo Sandbox, Wireshark</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
-
 {% endblock %}

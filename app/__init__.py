@@ -1,4 +1,4 @@
-from flask import Flask, g
+from flask import Flask, g, redirect, session, url_for, request
 from peewee import SqliteDatabase
 from config import DATABASE
 from flask_mail import Mail  # Import Flask-Mail
@@ -8,6 +8,14 @@ db = SqliteDatabase(DATABASE)
 
 app = Flask(__name__)
 app.config.from_object("config")
+
+# List of route names that don’t require authentication
+excluded_routes = {
+    "auth.login",
+    "auth.register",
+    "auth.verify_otp",
+    "auth.forgot_password",
+}
 
 mail = Mail(app)  # Initialize Flask-Mail with the app
 
@@ -24,6 +32,17 @@ with app.app_context():
     db.connect()
     db.create_tables([User, AnalysisReport], safe=True)
     db.close()
+
+
+@app.before_request
+def check_authentication():
+    # Skip authentication for static files and excluded routes
+    if request.endpoint.startswith("static") or request.endpoint in excluded_routes:
+        return  # Allow static files and excluded routes
+
+    # Redirect to login if user is not authenticated
+    if "user_id" not in session:
+        return redirect(url_for("auth.login"))
 
 
 @app.before_request
