@@ -27,6 +27,8 @@ def login():
             user = User.get(User.email == email)
             # Verify the password
             if check_password_hash(user.password, password):
+                session["user_id"] = user.user_id
+                session["email"] = user.email
                 flash("Login successful.")
                 # Redirect to a dashboard or home page after login
                 return redirect(url_for("home"))
@@ -78,7 +80,7 @@ def register():
             # (Optional: save OTP to the user's record or as a session variable)
             # Here, we just store it in the session temporarily
             session["otp"] = otp
-            session["user_id"] = new_user.id
+            session["user_id"] = new_user.user_id
             return redirect(url_for("auth.verify_otp"))
         except Exception as e:
             flash(f"Error sending OTP: {str(e)}")
@@ -115,7 +117,7 @@ def forgot_password():
 
             # Store OTP in the session or in a database if required
             session["otp"] = otp
-            session["reset_user_id"] = user.id
+            session["reset_user_id"] = user.user_id
 
             # Send OTP via email
             msg = Message(
@@ -160,3 +162,46 @@ def reset_password():
             return redirect(url_for("auth.reset_password"))
 
     return render_template("admin/auth/reset_password.html")
+
+
+@auth_bp.route("/resend_otp", methods=["GET"])
+def resend_otp():
+    user_id = session.get("reset_user_id")
+
+    # Check if the user is logged in and has started registration
+    if not user_id:
+        flash("You need to register or log in first.")
+        return redirect(url_for("auth.register"))
+
+    try:
+        # Retrieve the user from the database
+        user = User.get(User.user_id == user_id)
+
+        # Generate a new OTP
+        otp = generate_otp()
+
+        # Send OTP email
+        msg = Message(
+            subject="Your OTP for QuickScan Registration",
+            recipients=[user.email],
+            body=f"Hello {user.first_name},\n\nYour new OTP for QuickScan registration is: {otp}\n\nPlease use this OTP to verify your account.\n\nBest regards,\nQuickScan Team",
+        )
+        mail.send(msg)
+
+        # Store the new OTP in the session
+        session["otp"] = otp
+
+        flash("A new OTP has been sent to your email.")
+        return redirect(url_for("auth.reset_password"))
+
+    except Exception as e:
+        flash(f"Error sending OTP: {str(e)}")
+        return redirect(url_for("auth.reset_password"))
+
+
+@auth_bp.route("/logout")
+def logout():
+    # Clear the session data
+    session.clear()
+    flash("You have been logged out successfully.")
+    return redirect(url_for("auth.login"))

@@ -61,26 +61,48 @@
         <thead>
           <tr>
             <th class="th-sm"><strong>ID</strong></th>
-            <th data-mdb-sort="true" class="th-sm">
-              <strong>File Name</strong>
-            </th>
-            <th data-mdb-sort="false" class="th-sm">
-              <strong>File Size (KB)</strong>
-            </th>
-            <th data-mdb-sort="false" class="th-sm">
-              <strong>Upload Time</strong>
-            </th>
-            <th data-mdb-sort="false" class="th-sm"><strong>Status</strong></th>
-            <th data-mdb-sort="false" class="th-sm"><strong>Score</strong></th>
-            <th data-mdb-sort="false" class="th-sm">
-              <strong>Control</strong>
-            </th>
+            <th class="th-sm"><strong>File Name</strong></th>
+            <th class="th-sm"><strong>File Size (KB)</strong></th>
+            <th class="th-sm"><strong>Upload Time</strong></th>
+            <th class="th-sm"><strong>Status</strong></th>
+            <th class="th-sm"><strong>Score</strong></th>
+            <th class="th-sm"><strong>Control</strong></th>
           </tr>
         </thead>
         <tbody>
+          {% if reports %} {% for report in reports %}
           <tr>
-            <td colspan="7" class="fw-bold fs-6">There is no data yet !</td>
+            <td>{{ report.report_id }}</td>
+            <td>{{ report.file_name }}</td>
+            <td>{{ (report.file_size / 1024) | round(2) }}</td>
+            <!-- Convert file size to KB -->
+            <td>{{ report.upload_time.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+            <!-- Format upload time -->
+            <td>{{ report.status }}</td>
+            <td>{{ report.score }}</td>
+            <td>
+              <!-- Control buttons (View, Edit, Delete) -->
+              <a
+                href="{{url_for('report_details', report_id=report.report_id)}}"
+                class="btn btn-info btn-sm"
+              >
+                <i class="fas fa-eye"></i>
+              </a>
+              <a href="#" class="btn btn-warning btn-sm">
+                <i class="fas fa-pen"></i
+              ></a>
+              <a href="#" class="btn btn-danger btn-sm">
+                <i class="fas fa-trash-can"></i>
+              </a>
+            </td>
           </tr>
+          {% endfor %} {% else %}
+          <tr>
+            <td colspan="7" class="fw-bold fs-6 text-center">
+              There is no data yet!
+            </td>
+          </tr>
+          {% endif %}
         </tbody>
       </table>
     </div>

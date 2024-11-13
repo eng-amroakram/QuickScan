@@ -6,6 +6,7 @@ from peewee import (
     TextField,
     DateTimeField,
     AutoField,
+    IntegerField,
 )
 from datetime import datetime
 from . import db
@@ -31,6 +32,11 @@ class AnalysisReport(BaseModel):
     report_id = AutoField()
     user = ForeignKeyField(User, backref="reports", on_delete="CASCADE")
     report_content = TextField()
+    file_name = CharField()  # Add the file name
+    file_size = IntegerField()  # Add the file size
+    upload_time = DateTimeField(default=datetime.now)  # Add the upload time
+    status = CharField()  # Add the status (Benign, Suspicious, Malicious, etc.)
+    score = IntegerField()  # Add the score
     timestamp = DateTimeField(default=datetime.now)
 
     def __str__(self):
