@@ -15,8 +15,8 @@ excluded_routes = {
     "auth.register",
     "auth.verify_otp",
     "auth.forgot_password",
-    # "auth.reset_password",
-    # "auth.resend_otp",
+    "auth.reset_password",
+    "auth.resend_otp",
 }
 
 mail = Mail(app)  # Initialize Flask-Mail with the app
