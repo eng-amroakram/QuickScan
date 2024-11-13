@@ -1,8 +1,6 @@
 import os
 
-
 # Variables
-
 DEBUG = True
 SECRET_KEY = "your_secret_key_here"
 
