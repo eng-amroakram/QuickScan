@@ -39,7 +39,9 @@
             />
           </div>
 
-          <button type="submit" class="btn btn-primary mt-3">Upload</button>
+          <button type="button" id="upload-button" class="btn btn-primary mt-3">
+            Upload
+          </button>
         </form>
 
         <!-- Progress Bar -->
@@ -69,6 +71,7 @@
 
 <script>
   // Handling file upload progress and spinner display
+  const uploadButton = document.getElementById("upload-button");
   const fileInput = document.getElementById("file");
   const spinner = document.getElementById("spinner");
   const fileIcon = document.getElementById("file-icon");
@@ -76,8 +79,14 @@
   const uploadProgress = document.getElementById("upload-progress");
   const statusMessage = document.getElementById("status-message");
 
-  // On file input change, start file upload
-  fileInput.addEventListener("change", function () {
+  // On upload button click, start file upload
+  uploadButton.addEventListener("click", function () {
+    // Check if a file is selected
+    if (!fileInput.files.length) {
+      statusMessage.textContent = "Please select a file before uploading.";
+      return;
+    }
+
     // Trigger file upload progress bar and spinner
     spinner.style.display = "inline-block";
     fileIcon.style.display = "none";
@@ -100,6 +109,11 @@
           progressBar.style.width = "100%";
           progressBar.textContent = "100%";
           progressBar.classList.add("bg-success");
+
+          // Wait for 2 seconds, then redirect to the report details page
+          setTimeout(() => {
+            window.location.href = data.redirect;
+          }, 2000); // 2000 milliseconds = 2 seconds
         } else if (data.redirect) {
           // Redirect to login page if the user is not logged in
           window.location.href = data.redirect;

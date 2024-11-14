@@ -136,7 +136,7 @@ def upload_file():
 
     # Save the analysis to the database
     user = User.get(User.email == user_email)  # Get user by email
-    analysis_report = AnalysisReport.create(
+    report = AnalysisReport.create(
         user=user,
         report_content=ransomware_features,  # Add the YARA rules match as report content
         file_name=file_name,
@@ -146,9 +146,12 @@ def upload_file():
         score=score,
     )
 
-    # Return success response with file path
+    # Return success response with file path and report_id
     return jsonify(
-        success=True, message="File uploaded and analyzed successfully.", md5=md5_hash
+        {
+            "success": True,
+            "redirect": url_for("report_details", report_id=report.report_id),
+        }
     )
 
 
